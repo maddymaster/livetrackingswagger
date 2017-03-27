@@ -1,0 +1,3155 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.2",
+    "title": "ADOM"
+  },
+  "host": "localhost:1337",
+  "basePath": "/v2",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/Alert": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns all the Alerts avialable in the system.",
+        "summary": "All Alerts in the system",
+        "operationId": "allAlerts",
+        "tags": [
+          "Alert"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Alerts"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates an Alert in the system and returns the created Alert as JSON",
+        "summary": "Create an Alert",
+        "tags": [
+          "Alert"
+        ],
+        "parameters": [
+          {
+            "name": "alert",
+            "in": "body",
+            "description": "Alert Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AlertCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          }
+        }
+      }
+    },
+    "/Alert/{alert-id}": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns Alert by it's identity",
+        "summary": "Get Alert by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Alert"
+        ],
+        "parameters": [
+          {
+            "name": "alert-id",
+            "in": "path",
+            "description": "identity of the alert in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Alert",
+        "summary": "Update Alert by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Alert"
+        ],
+        "parameters": [
+          {
+            "name": "alert-id",
+            "in": "path",
+            "description": "identity of the alert in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "alert",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AlertUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Alert",
+        "summary": "Delete Alert by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Alert"
+        ],
+        "parameters": [
+          {
+            "name": "alert-id",
+            "in": "path",
+            "description": "identity of the alert in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Alert"
+            }
+          }
+        }
+      }
+    },
+    "/Device": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns all the Device avialable in the system.",
+        "summary": "All Device in the system",
+        "operationId": "allDevices",
+        "tags": [
+          "Device"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Devices"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Device in the system and returns the created Device as JSON",
+        "summary": "Create a Device",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device",
+            "in": "body",
+            "description": "Device Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        }
+      }
+    },
+    "/Device/{device-id}": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns Device by it's identity",
+        "summary": "Get Device by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Device",
+        "summary": "Update Device by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "device",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Device",
+        "summary": "Delete Device by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        }
+      }
+    },
+    "/Device/{device-id}/DeviceType": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns Device Type by Device identity",
+        "summary": "Get Device Type by Device identity",
+        "operationId": "deviceTypeByDevice",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeviceType"
+            }
+          }
+        }
+      }
+    },
+    "/Device/{device-id}/GPS": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns GPS Data by Device identity",
+        "summary": "Get GPS Data by Device identity",
+        "operationId": "gpsDataByDeviceId",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "description": "startTime of the GPS Data",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "description": "endTime of the GPS Date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startRange",
+            "in": "query",
+            "description": "Start Range of the records",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of records to be fetched.",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSDataSet"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete GPS Data by Device identity",
+        "summary": "Delete GPS Data by Device identity",
+        "operationId": "deleteGPSDataById",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSDataSet"
+            }
+          }
+        }
+      }
+    },
+    "/Device/{device-id}/GeoFence": {
+      "x-swagger-router-controller": "DeviceController",
+      "get": {
+        "description": "Returns GeoFences of Device with identity",
+        "summary": "Get GeoFences of Device by it's identity",
+        "operationId": "geoFencesByDeviceId",
+        "tags": [
+          "Device"
+        ],
+        "parameters": [
+          {
+            "name": "device-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeoFences"
+            }
+          }
+        }
+      }
+    },
+    "/DeviceType": {
+      "x-swagger-router-controller": "DeviceTypeController",
+      "get": {
+        "description": "Returns all the Device Types avialable in the system.",
+        "summary": "All Device Types in the system",
+        "operationId": "allDeviceTypes",
+        "tags": [
+          "Device Type"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeviceTypes"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Device Type in the system and returns the created Device Type as JSON",
+        "summary": "Create a Device Type",
+        "tags": [
+          "Device Type"
+        ],
+        "parameters": [
+          {
+            "name": "deviceType",
+            "in": "body",
+            "description": "Device Type Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceTypeCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeviceType"
+            }
+          }
+        }
+      }
+    },
+    "/DeviceType/{device-type-id}": {
+      "x-swagger-router-controller": "DeviceTypeController",
+      "get": {
+        "description": "Returns Device Type by it's identity",
+        "summary": "Get Device Type by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Device Type"
+        ],
+        "parameters": [
+          {
+            "name": "device-type-id",
+            "in": "path",
+            "description": "identity of the device type in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeviceType"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Device Type",
+        "summary": "Update Device Type by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Device Type"
+        ],
+        "parameters": [
+          {
+            "name": "device-type-id",
+            "in": "path",
+            "description": "identity of the device type in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "device type",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceTypeUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeviceType"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Device Type",
+        "summary": "Delete Device Type by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Device Type"
+        ],
+        "parameters": [
+          {
+            "name": "device-type-id",
+            "in": "path",
+            "description": "identity of the device type in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/DeviceType"
+            }
+          }
+        }
+      }
+    },
+    "/DeviceType/{device-type-id}/Device": {
+      "x-swagger-router-controller": "DeviceTypeController",
+      "get": {
+        "description": "Returns list of Devices by Device Type identity",
+        "summary": "Get Devices by Device Type identity",
+        "operationId": "devicesByDeviceType",
+        "tags": [
+          "Device Type"
+        ],
+        "parameters": [
+          {
+            "name": "device-type-id",
+            "in": "path",
+            "description": "identity of the device type in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Devices"
+            }
+          }
+        }
+      }
+    },
+    "/Entity": {
+      "x-swagger-router-controller": "EntityController",
+      "get": {
+        "description": "Returns all the Entities avialable in the system.",
+        "summary": "All Entities in the system",
+        "operationId": "allEntities",
+        "tags": [
+          "Entity"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entities"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates an Entity in the system and returns the created Entity as JSON",
+        "summary": "Create an Entity",
+        "tags": [
+          "Entity"
+        ],
+        "parameters": [
+          {
+            "name": "entity",
+            "in": "body",
+            "description": "Entity Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EntityCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      }
+    },
+    "/Entity/{entity-id}": {
+      "x-swagger-router-controller": "EntityController",
+      "get": {
+        "description": "Returns Entity by it's identity",
+        "summary": "Get Entity by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Entity"
+        ],
+        "parameters": [
+          {
+            "name": "entity-id",
+            "in": "path",
+            "description": "identity of the entity in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Entity",
+        "summary": "Update Entity by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Entity"
+        ],
+        "parameters": [
+          {
+            "name": "entity-id",
+            "in": "path",
+            "description": "identity of the entity in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "entity",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EntityUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Entity",
+        "summary": "Delete Entity by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Entity"
+        ],
+        "parameters": [
+          {
+            "name": "entity-id",
+            "in": "path",
+            "description": "identity of the role in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      }
+    },
+    "/Entity/{entity-id}/User": {
+      "x-swagger-router-controller": "EntityController",
+      "get": {
+        "description": "Returns list of Users by Entity identity",
+        "summary": "Get Users by Entity identity",
+        "operationId": "usersByEntity",
+        "tags": [
+          "Entity"
+        ],
+        "parameters": [
+          {
+            "name": "entity-id",
+            "in": "path",
+            "description": "identity of the entity in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entities"
+            }
+          }
+        }
+      }
+    },
+    "/GeoFence": {
+      "x-swagger-router-controller": "GeoFenceController",
+      "get": {
+        "description": "Returns all the GeoFences avialable in the system.",
+        "summary": "All GeoFences in the system",
+        "operationId": "allGeoFences",
+        "tags": [
+          "GeoFence"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeoFences"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a GeoFence and returns it as a JSON",
+        "summary": "Create a GeoFence",
+        "tags": [
+          "GeoFence"
+        ],
+        "parameters": [
+          {
+            "name": "geoFence",
+            "in": "body",
+            "description": "GeoFence Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GeoFenceCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeoFence"
+            }
+          }
+        }
+      }
+    },
+    "/GeoFence/{geoFence-id}": {
+      "x-swagger-router-controller": "GeoFenceController",
+      "get": {
+        "description": "Returns the GeoFence by it's identity",
+        "summary": "GeoFence by it's identity",
+        "operationId": "findById",
+        "tags": [
+          "GeoFence"
+        ],
+        "parameters": [
+          {
+            "name": "geoFence-id",
+            "in": "path",
+            "description": "Identity of GeoFence",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeoFence"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated GeoFence Record",
+        "summary": "Update GeoFence Record by Id",
+        "operationId": "updateById",
+        "tags": [
+          "GeoFence"
+        ],
+        "parameters": [
+          {
+            "name": "geoFence-id",
+            "in": "path",
+            "description": "identity of the GeoFence Record in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "geoFence",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GeoFenceUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeoFence"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted GeoFence record",
+        "summary": "Delete GeoFence record by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "GeoFence"
+        ],
+        "parameters": [
+          {
+            "name": "geoFence-id",
+            "in": "path",
+            "description": "identity of the GeoFence Record in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeoFence"
+            }
+          }
+        }
+      }
+    },
+    "/GeoFence/{geoFence-id}/Vertex": {
+      "x-swagger-router-controller": "GeoFenceController",
+      "get": {
+        "description": "Returns all the vertexes of GeoFence by it's identity",
+        "summary": "Vertexes of GeoFence",
+        "operationId": "vertexesOfGeoFence",
+        "tags": [
+          "GeoFence"
+        ],
+        "parameters": [
+          {
+            "name": "geoFence-id",
+            "in": "path",
+            "description": "identity of GeoFence in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vertexes"
+            }
+          }
+        }
+      }
+    },
+    "/GPS": {
+      "x-swagger-router-controller": "GPSDataController",
+      "get": {
+        "description": "Returns all the GPS Data avialable in the system.",
+        "summary": "Complete GPS Data in the system",
+        "operationId": "completeGPSData",
+        "tags": [
+          "GPS"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSDataSet"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a GPS Record in the system and returns the created GPS Record as JSON",
+        "summary": "Create a GPS Record",
+        "tags": [
+          "GPS"
+        ],
+        "parameters": [
+          {
+            "name": "gps",
+            "in": "body",
+            "description": "GPS Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GPSCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSData"
+            }
+          }
+        }
+      }
+    },
+    "/GPS/{gps-id}": {
+      "x-swagger-router-controller": "GPSDataController",
+      "get": {
+        "description": "Returns GPS Info by it's identity",
+        "summary": "Get GPS Info by Identity",
+        "operationId": "findById",
+        "tags": [
+          "GPS"
+        ],
+        "parameters": [
+          {
+            "name": "gps-id",
+            "in": "path",
+            "description": "identity of the GPS record in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSData"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated GPS Record",
+        "summary": "Update GPS Record by Id",
+        "operationId": "updateById",
+        "tags": [
+          "GPS"
+        ],
+        "parameters": [
+          {
+            "name": "gps-id",
+            "in": "path",
+            "description": "identity of the GPS Record in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "gps",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GPSUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSData"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted GPS record",
+        "summary": "Delete GPS record by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "GPS"
+        ],
+        "parameters": [
+          {
+            "name": "gps-id",
+            "in": "path",
+            "description": "identity of the GPS Record in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GPSData"
+            }
+          }
+        }
+      }
+    },
+    "/Location": {
+      "x-swagger-router-controller": "LocationController",
+      "get": {
+        "description": "Returns all the Locations avialable in the system.",
+        "summary": "All Locations in the system",
+        "operationId": "allLocations",
+        "tags": [
+          "Location"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Locations"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Location in the system and returns the created Location as JSON",
+        "summary": "Create a Location",
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "location",
+            "in": "body",
+            "description": "Device Type Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LocationCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        }
+      }
+    },
+    "/Location/{location-id}": {
+      "x-swagger-router-controller": "LocationController",
+      "get": {
+        "description": "Returns Location by it's identity",
+        "summary": "Get Location by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "location-id",
+            "in": "path",
+            "description": "identity of the location in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Location",
+        "summary": "Update Location by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "location-id",
+            "in": "path",
+            "description": "identity of the location in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "location",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LocationUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Location",
+        "summary": "Delete Location by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "location-id",
+            "in": "path",
+            "description": "identity of the location in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        }
+      }
+    },
+    "/Location/{location-id}/User": {
+      "x-swagger-router-controller": "LocationController",
+      "get": {
+        "description": "Returns list of Users by Location identity",
+        "summary": "Get Users by Location identity",
+        "operationId": "usersByLocation",
+        "tags": [
+          "Location"
+        ],
+        "parameters": [
+          {
+            "name": "location-id",
+            "in": "path",
+            "description": "identity of the location in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/Role": {
+      "x-swagger-router-controller": "RoleController",
+      "get": {
+        "description": "Returns all the Roles avialable in the system.",
+        "summary": "All Roles in the system",
+        "operationId": "allRoles",
+        "tags": [
+          "Role"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Roles"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Role in the system and returns the created Role as JSON",
+        "summary": "Create a Role",
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "role",
+            "in": "body",
+            "description": "Role Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        }
+      }
+    },
+    "/Role/{roleid}": {
+      "x-swagger-router-controller": "RoleController",
+      "get": {
+        "description": "Returns Role by it's identity",
+        "summary": "Get Role by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "roleid",
+            "in": "path",
+            "description": "identity of the role in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Role",
+        "summary": "Update Role by Identity",
+        "operationId": "updateById",
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "roleid",
+            "in": "path",
+            "description": "identity of the role in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "role",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RoleUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Role",
+        "summary": "Delete Role by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "roleid",
+            "in": "path",
+            "description": "identity of the role in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Role"
+            }
+          }
+        }
+      }
+    },
+    "/Role/{role-id}/User": {
+      "x-swagger-router-controller": "RoleController",
+      "get": {
+        "description": "Returns list of Users by Role identity",
+        "summary": "Get Users by Role identity",
+        "operationId": "usersByRoleId",
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "role-id",
+            "in": "path",
+            "description": "identity of the role in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/Trip": {
+      "x-swagger-router-controller": "TripController",
+      "get": {
+        "description": "Returns all the Trips avialable in the system.",
+        "summary": "All Trips in the system",
+        "operationId": "allTrips",
+        "tags": [
+          "Trip"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Trips"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Trip in the system and returns the created Trip as JSON",
+        "summary": "Create a Trip",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip",
+            "in": "body",
+            "description": "Trip Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TripCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Trip"
+            }
+          }
+        }
+      }
+    },
+    "/Trip/{trip-id}": {
+      "x-swagger-router-controller": "TripController",
+      "get": {
+        "description": "Returns Trip by it's identity",
+        "summary": "Get Trip by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip-id",
+            "in": "path",
+            "description": "identity of the device in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Trip"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Trip",
+        "summary": "Update Trip by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip-id",
+            "in": "path",
+            "description": "identity of the trip in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "trip",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TripUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Trip"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Trip",
+        "summary": "Delete Trip by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip-id",
+            "in": "path",
+            "description": "identity of the trip in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Trip"
+            }
+          }
+        }
+      }
+    },
+    "/Trip/{trip-id}/Entity": {
+      "x-swagger-router-controller": "TripController",
+      "get": {
+        "description": "Returns Entity by Trip identity",
+        "summary": "Get Entity by Trip identity",
+        "operationId": "entityByTripId",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip-id",
+            "in": "path",
+            "description": "identity of the trip in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      }
+    },
+    "/Trip/{trip-id}/Driver": {
+      "x-swagger-router-controller": "TripController",
+      "get": {
+        "description": "Returns Entity by Trip identity",
+        "summary": "Get Entity by Trip identity",
+        "operationId": "driverByTripId",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip-id",
+            "in": "path",
+            "description": "identity of the trip in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/Trip/{trip-id}/User": {
+      "x-swagger-router-controller": "TripController",
+      "get": {
+        "description": "Returns all users by Trip identity",
+        "summary": "Get all users by Trip identity",
+        "operationId": "usersByTripId",
+        "tags": [
+          "Trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip-id",
+            "in": "path",
+            "description": "identity of the trip in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      }
+    },
+    "/User": {
+      "x-swagger-router-controller": "UserController",
+      "get": {
+        "description": "Returns all the Vehicles avialable in the system.",
+        "summary": "All Vehicles in the system",
+        "operationId": "allVehicles",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a user in the system and returns the created user as JSON",
+        "summary": "Create a User",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle",
+            "in": "body",
+            "description": "Vehicle Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/User/{user-id}": {
+      "x-swagger-router-controller": "UserController",
+      "get": {
+        "description": "Returns User by it's identity",
+        "summary": "Get User by Identity",
+        "operationId": "findById",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user-id",
+            "in": "path",
+            "description": "identity of the user in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated User",
+        "summary": "Update User by Id",
+        "operationId": "updateById",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user-id",
+            "in": "path",
+            "description": "identity of the user in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted User",
+        "summary": "Delete User by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user-id",
+            "in": "path",
+            "description": "identity of the user in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/User/{user-id}/Entity": {
+      "x-swagger-router-controller": "VehicleController",
+      "get": {
+        "description": "Returns Entity by User identity",
+        "summary": "Get Entity by User identity",
+        "operationId": "entityByUserId",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user-id",
+            "in": "path",
+            "description": "identity of the user in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      }
+    },
+    "/User/{user-id}/Location": {
+      "x-swagger-router-controller": "UserController",
+      "get": {
+        "description": "Returns Location by User identity",
+        "summary": "Get Location by User identity",
+        "operationId": "locationByUserId",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user-id",
+            "in": "path",
+            "description": "identity of the user in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          }
+        }
+      }
+    },
+    "/User/{user-id}/Role": {
+      "x-swagger-router-controller": "UserController",
+      "get": {
+        "description": "Returns Location by User identity",
+        "summary": "Get Location by User identity",
+        "operationId": "rolesByUserId",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "user-id",
+            "in": "path",
+            "description": "identity of the user in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Roles"
+            }
+          }
+        }
+      }
+    },
+    "/Vehicle": {
+      "x-swagger-router-controller": "VehicleController",
+      "get": {
+        "description": "Returns all the Vehicles avialable in the system.",
+        "summary": "All Vehicles in the system",
+        "operationId": "allVehicles",
+        "tags": [
+          "Vehicle"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vehicles"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Vehicle in the system and returns the created Vehicle as JSON",
+        "summary": "Create a Vehicle",
+        "tags": [
+          "Vehicle"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle",
+            "in": "body",
+            "description": "Vehicle Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VehicleCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        }
+      }
+    },
+    "/Vehicle/{vehicle-id}": {
+      "x-swagger-router-controller": "VehicleController",
+      "get": {
+        "description": "Returns Vehicle by it's identity",
+        "summary": "Get Vehicle by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Vehicle"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle-id",
+            "in": "path",
+            "description": "identity of the vehicle in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Vehicle",
+        "summary": "Update Vehicle by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Vehicle"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle-id",
+            "in": "path",
+            "description": "identity of the vehicle in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "vehicle",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VehicleUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Vehicle",
+        "summary": "Delete Vehicle by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Vehicle"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle-id",
+            "in": "path",
+            "description": "identity of the vehicle in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vehicle"
+            }
+          }
+        }
+      }
+    },
+    "/Vehicle/{vehicle-id}/Entity": {
+      "x-swagger-router-controller": "VehicleController",
+      "get": {
+        "description": "Returns Entity by Vehicle identity",
+        "summary": "Get Entity by Vehicle identity",
+        "operationId": "entityByVehicleId",
+        "tags": [
+          "Vehicle"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle-id",
+            "in": "path",
+            "description": "identity of the vehicle in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Entity"
+            }
+          }
+        }
+      }
+    },
+    "/Vehicle/{vehicle-id}/Device": {
+      "x-swagger-router-controller": "VehicleController",
+      "get": {
+        "description": "Returns Device by Vehicle identity",
+        "summary": "Get Device by Vehicle identity",
+        "operationId": "deviceByVehicleId",
+        "tags": [
+          "Vehicle"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle-id",
+            "in": "path",
+            "description": "identity of the vehicle in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Device"
+            }
+          }
+        }
+      }
+    },
+    "/Vertex": {
+      "x-swagger-router-controller": "VertexController",
+      "get": {
+        "description": "Returns all the Vertexes avialable in the system.",
+        "summary": "All Vertexes in the system",
+        "operationId": "allVertexes",
+        "tags": [
+          "Vertex"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vertexes"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "create",
+        "description": "Creates a Vertex in the system and returns the created Vertex as JSON",
+        "summary": "Create a Vertex",
+        "tags": [
+          "Vertex"
+        ],
+        "parameters": [
+          {
+            "name": "vertex",
+            "in": "body",
+            "description": "Vertex Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VertexCreate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vertex"
+            }
+          }
+        }
+      }
+    },
+    "/Vertex/{vertex-id}": {
+      "x-swagger-router-controller": "VertexController",
+      "get": {
+        "description": "Returns Vertex by it's identity",
+        "summary": "Get Vertex by Identity",
+        "operationId": "findById",
+        "tags": [
+          "Vertex"
+        ],
+        "parameters": [
+          {
+            "name": "vertex-id",
+            "in": "path",
+            "description": "identity of the vertex in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vertex"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Returns updated Vertex",
+        "summary": "Update Vertex by Id",
+        "operationId": "updateById",
+        "tags": [
+          "Vertex"
+        ],
+        "parameters": [
+          {
+            "name": "vertex-id",
+            "in": "path",
+            "description": "identity of the Vertex in the system",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "vertex",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VertexUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vertex"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Returns deleted Vertex",
+        "summary": "Delete Vertex by Identity",
+        "operationId": "deleteById",
+        "tags": [
+          "Vertex"
+        ],
+        "parameters": [
+          {
+            "name": "vertex-id",
+            "in": "path",
+            "description": "identity of the vertex in the system",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Vertex"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Alerts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Alert"
+      }
+    },
+    "Alert": {
+      "type": "object",
+      "required": [
+        "id",
+        "topicName",
+        "message",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "topicName": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AlertCreate": {
+      "type": "object",
+      "required": [
+        "topicName",
+        "message"
+      ],
+      "properties": {
+        "topicName": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "AlertUpdate": {
+      "type": "object",
+      "properties": {
+        "topicName": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Devices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Device"
+      }
+    },
+    "Device": {
+      "type": "object",
+      "required": [
+        "deviceType",
+        "entity",
+        "IMEI",
+        "SIM",
+        "UIN",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "deviceType": {
+          "type": "integer"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "IMEI": {
+          "type": "string"
+        },
+        "SIM": {
+          "type": "string"
+        },
+        "UIN": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "DeviceCreate": {
+      "type": "object",
+      "required": [
+        "deviceType",
+        "entity",
+        "IMEI",
+        "SIM",
+        "UIN"
+      ],
+      "properties": {
+        "deviceType": {
+          "type": "integer"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "IMEI": {
+          "type": "string"
+        },
+        "SIM": {
+          "type": "string"
+        },
+        "UIN": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceUpdate": {
+      "type": "object",
+      "properties": {
+        "deviceType": {
+          "type": "integer"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "IMEI": {
+          "type": "string"
+        },
+        "SIM": {
+          "type": "string"
+        },
+        "UIN": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/DeviceType"
+      }
+    },
+    "DeviceType": {
+      "type": "object",
+      "required": [
+        "type",
+        "make",
+        "model",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "make": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "DeviceTypeCreate": {
+      "type": "object",
+      "required": [
+        "type",
+        "make",
+        "model"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "make": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        }
+      }
+    },
+    "DeviceTypeUpdate": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "make": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        }
+      }
+    },
+    "GeoFences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/GeoFence"
+      }
+    },
+    "GeoFence": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "description",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "GeoFenceCreate": {
+      "type": "object",
+      "required": [
+        "name",
+        "description"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "GeoFenceUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "GPSData": {
+      "type": "object",
+      "required": [
+        "id",
+        "device",
+        "latitude",
+        "longitude",
+        "speed",
+        "GPSDateTime",
+        "Direction",
+        "Odometer",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "speed": {
+          "type": "integer"
+        },
+        "GPSDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Direction": {
+          "type": "string"
+        },
+        "Odometer": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "GPSDataSet": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/GPSData"
+      }
+    },
+    "GPSCreate": {
+      "type": "object",
+      "required": [
+        "device",
+        "latitude",
+        "longitude",
+        "speed",
+        "GPSDateTime",
+        "Direction",
+        "Odometer"
+      ],
+      "properties": {
+        "device": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "speed": {
+          "type": "integer"
+        },
+        "GPSDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Direction": {
+          "type": "string"
+        },
+        "Odometer": {
+          "type": "number"
+        }
+      }
+    },
+    "GPSUpdate": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "speed": {
+          "type": "integer"
+        },
+        "GPSDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Direction": {
+          "type": "string"
+        },
+        "Odometer": {
+          "type": "number"
+        }
+      }
+    },
+    "Entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Entity"
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "required": [
+        "companyName",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "companyName": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "EntityCreate": {
+      "type": "object",
+      "required": [
+        "companyName"
+      ],
+      "properties": {
+        "companyName": {
+          "type": "string"
+        }
+      }
+    },
+    "EntityUpdate": {
+      "type": "object",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "required": [
+        "name",
+        "latitude",
+        "longitude",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Locations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Location"
+      }
+    },
+    "LocationCreate": {
+      "type": "object",
+      "required": [
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "LocationUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "Role": {
+      "type": "object",
+      "required": [
+        "name",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Roles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Role"
+      }
+    },
+    "RoleCreate": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "RoleUpdate": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Trip": {
+      "type": "object",
+      "required": [
+        "device",
+        "driver",
+        "endLocation",
+        "entity",
+        "startLocation",
+        "assignedTime",
+        "endTime",
+        "startTime",
+        "status",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "device": {
+          "type": "integer"
+        },
+        "driver": {
+          "type": "integer"
+        },
+        "endLocation": {
+          "type": "integer"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "startLocation": {
+          "type": "integer"
+        },
+        "assignedTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "type": "integer"
+        },
+        "startTime": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Trips": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Trip"
+      }
+    },
+    "TripCreate": {
+      "type": "object",
+      "required": [
+        "device",
+        "driver",
+        "entity",
+        "assignedTime",
+        "status"
+      ],
+      "properties": {
+        "device": {
+          "type": "integer"
+        },
+        "driver": {
+          "type": "integer"
+        },
+        "endLocation": {
+          "type": "integer"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "startLocation": {
+          "type": "integer"
+        },
+        "assignedTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "type": "integer"
+        },
+        "startTime": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "TripUpdate": {
+      "type": "object",
+      "properties": {
+        "device": {
+          "type": "integer"
+        },
+        "driver": {
+          "type": "integer"
+        },
+        "endLocation": {
+          "type": "integer"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "startLocation": {
+          "type": "integer"
+        },
+        "assignedTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "type": "integer"
+        },
+        "startTime": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "required": [
+        "entity",
+        "location",
+        "address",
+        "emailAddress",
+        "emergencyContactNumber",
+        "mobileNumber",
+        "name",
+        "userId",
+        "userName",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "entity": {
+          "type": "integer"
+        },
+        "location": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "emergencyContactEmail": {
+          "type": "string"
+        },
+        "emergencyContactName": {
+          "type": "string"
+        },
+        "emergencyContactNumber": {
+          "type": "string"
+        },
+        "mobileNumber": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "UserCreate": {
+      "type": "object",
+      "required": [
+        "entity",
+        "location",
+        "address",
+        "emailAddress",
+        "emergencyContactNumber",
+        "mobileNumber",
+        "name",
+        "password",
+        "userId",
+        "userName"
+      ],
+      "properties": {
+        "entity": {
+          "type": "integer"
+        },
+        "location": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "emergencyContactEmail": {
+          "type": "string"
+        },
+        "emergencyContactName": {
+          "type": "string"
+        },
+        "emergencyContactNumber": {
+          "type": "string"
+        },
+        "mobileNumber": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        }
+      }
+    },
+    "UserUpdate": {
+      "type": "object",
+      "properties": {
+        "entity": {
+          "type": "integer"
+        },
+        "location": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "emergencyContactEmail": {
+          "type": "string"
+        },
+        "emergencyContactName": {
+          "type": "string"
+        },
+        "emergencyContactNumber": {
+          "type": "string"
+        },
+        "mobileNumber": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "Vehicle": {
+      "type": "object",
+      "required": [
+        "SIM",
+        "UIN",
+        "IMEI",
+        "entity",
+        "device",
+        "id",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "SIM": {
+          "type": "string"
+        },
+        "UIN": {
+          "type": "string"
+        },
+        "IMEI": {
+          "type": "string"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Vehicles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Vehicle"
+      }
+    },
+    "VehicleCreate": {
+      "type": "object",
+      "required": [
+        "SIM",
+        "UIN",
+        "IMEI",
+        "entity"
+      ],
+      "properties": {
+        "SIM": {
+          "type": "string"
+        },
+        "UIN": {
+          "type": "string"
+        },
+        "IMEI": {
+          "type": "string"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        }
+      }
+    },
+    "VehicleUpdate": {
+      "type": "object",
+      "properties": {
+        "SIM": {
+          "type": "string"
+        },
+        "UIN": {
+          "type": "string"
+        },
+        "IMEI": {
+          "type": "string"
+        },
+        "entity": {
+          "type": "integer"
+        },
+        "device": {
+          "type": "integer"
+        }
+      }
+    },
+    "Vertexes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Vertex"
+      }
+    },
+    "Vertex": {
+      "type": "object",
+      "required": [
+        "id",
+        "geoFence",
+        "seq",
+        "latitude",
+        "longitude",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "geoFence": {
+          "type": "integer"
+        },
+        "seq": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "VertexCreate": {
+      "type": "object",
+      "required": [
+        "geoFence",
+        "seq",
+        "latitude",
+        "longitude"
+      ],
+      "properties": {
+        "geoFence": {
+          "type": "integer"
+        },
+        "seq": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    },
+    "VertexUpdate": {
+      "type": "object",
+      "properties": {
+        "geoFence": {
+          "type": "integer"
+        },
+        "seq": {
+          "type": "integer"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

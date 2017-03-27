@@ -1,0 +1,191 @@
+-- Table for Device Type
+CREATE TABLE "DeviceType"(
+"id" SERIAL UNIQUE NOT NULL,
+"type" VARCHAR(50) NOT NULL,
+"make" VARCHAR(50) NOT NULL,
+"model" VARCHAR(50) NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Entity
+CREATE TABLE "Entity"(
+"id" SERIAL UNIQUE NOT NULL,
+"companyName" VARCHAR(200) NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Device
+CREATE TABLE "Device"(
+"id" SERIAL UNIQUE NOT NULL,
+"SIM" VARCHAR(50) UNIQUE NOT NULL,
+"UIN" VARCHAR(50) UNIQUE NOT NULL,
+"IMEI" VARCHAR(50) UNIQUE NOT NULL,
+"deviceType" INTEGER REFERENCES "DeviceType"("id") NOT NULL,
+"entity" INTEGER REFERENCES "Entity"("id") NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Location
+CREATE TABLE "Location"(
+"id" SERIAL UNIQUE NOT NULL,
+"name" VARCHAR(200) NULL,
+"latitude" DOUBLE PRECISION,
+"longitude" DOUBLE PRECISION,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for User
+CREATE TABLE "User"(
+"id" SERIAL UNIQUE NOT NULL,
+"userId" VARCHAR(50) NULL,
+"userName" VARCHAR(50) UNIQUE NOT NULL,
+"password" VARCHAR(50) NOT NULL,
+"name" VARCHAR(50) NULL,
+"mobileNumber" VARCHAR(50) NOT NULL,
+"emailAddress" VARCHAR(50) NOT NULL,
+"emergencyContactNumber" VARCHAR(50) NOT NULL,
+"emergencyContactName" VARCHAR(50) NULL,
+"emergencyContactEmail" VARCHAR(50) NULL,
+"address" VARCHAR(200) NULL,
+"location" INTEGER REFERENCES "Location"("id") NULL,
+"entity" INTEGER REFERENCES "Entity"("id") NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Role
+CREATE TABLE "Role"(
+"id" SERIAL UNIQUE NOT NULL,
+"name" VARCHAR(50) UNIQUE NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for UserRole
+CREATE TABLE "UserRole"(
+"id" SERIAL UNIQUE NOT NULL,
+"user" INTEGER REFERENCES "User"("id") NULL,
+"role" INTEGER REFERENCES "Role"("id") NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Vehicle
+CREATE TABLE "Vehicle"(
+"id" SERIAL UNIQUE NOT NULL,
+"capacity" INTEGER NOT NULL,
+"device"  INTEGER REFERENCES "Device"("id") UNIQUE NULL,
+"entity" INTEGER REFERENCES "Entity"("id") NOT NULL,
+"make" VARCHAR(50) NOT NULL,
+"model" VARCHAR(50) NOT NULL,
+"registrationNumber" VARCHAR(50) UNIQUE NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Trip
+CREATE TABLE "Trip"(
+"id" SERIAL UNIQUE NOT NULL,
+"assignedTime" Timestamp(3) NOT NULL,
+"device" INTEGER REFERENCES "Device"("id") NOT NULL,
+"driver" INTEGER REFERENCES "User"("id") NOT NULL,
+"endLocation" INTEGER REFERENCES "Location"("id") NOT NULL,
+"endTime" Timestamp(3) NULL,
+"entity" INTEGER REFERENCES "Entity"("id") NOT NULL,
+"startTime" Timestamp(3) NULL,
+"startLocation" INTEGER REFERENCES "Location"("id") NOT NULL,
+"status" VARCHAR(50) NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Trip Details
+CREATE TABLE "TripDetails"(
+"id" SERIAL UNIQUE NOT NULL,
+"user" INTEGER REFERENCES "User"("id") NOT NULL,
+"startLocation" INTEGER REFERENCES "Location"("id") NOT NULL,
+"endLocation" INTEGER REFERENCES "Location"("id") NOT NULL,
+"trip" INTEGER REFERENCES "Trip"("id") NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for GPSData
+CREATE TABLE "GPSData"(
+"id" SERIAL UNIQUE NOT NULL,
+"device" INTEGER REFERENCES "Device"("id") NOT NULL,
+"latitude" DOUBLE PRECISION NOT NULL,
+"longitude" DOUBLE PRECISION NOT NULL,
+"speed" INTEGER NULL,
+"GPSDateTime" Timestamp(3) NOT NULL,
+"Direction" VARCHAR(10) NULL,
+"Odometer" DOUBLE PRECISION NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+
+-- Table for GeoFence
+CREATE TABLE "GeoFence"(
+"id" SERIAL UNIQUE NOT NULL,
+"name" VARCHAR(50) UNIQUE NOT NULL,
+"description" VARCHAR(200) UNIQUE NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Vertex
+CREATE TABLE "Vertex"(
+"id" SERIAL UNIQUE NOT NULL,
+"geoFence" INTEGER REFERENCES "GeoFence"("id") NOT NULL,
+"seq" INTEGER NOT NULL,
+"latitude" DOUBLE PRECISION,
+"longitude" DOUBLE PRECISION,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for DeviceGeoFence
+CREATE TABLE "DeviceGeoFence"(
+"id" SERIAL UNIQUE NOT NULL,
+"device" INTEGER REFERENCES "Device"("id") NOT NULL,
+"geoFence" INTEGER REFERENCES "GeoFence"("id") NOT NULL,
+"confined" BOOLEAN NOT NULL,
+"active" BOOLEAN NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Alert
+CREATE TABLE "Alert"(
+"id" SERIAL UNIQUE NOT NULL,
+"topicName" VARCHAR(100) NOT NULL,
+"message" VARCHAR(200) NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- Table for Device Latest State
+CREATE TABLE "DeviceLatestState"(
+"id" SERIAL UNIQUE NOT NULL,
+"device" INTEGER REFERENCES "Device"("id") NOT NULL,
+"GPS" INTEGER REFERENCES "GPSData"("id") NOT NULL,
+"geoFenceBreach" BOOLEAN NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
+-- TABLE for Device State History
+CREATE TABLE "DeviceStateHistory"(
+"id" SERIAL UNIQUE NOT NULL,
+"device" INTEGER REFERENCES "Device"("id") NOT NULL,
+"GPS" INTEGER REFERENCES "GPSData"("id") NOT NULL,
+"geoFenceBreach" BOOLEAN NOT NULL,
+"createdAt" Timestamp(3) NULL,
+"updatedAt" Timestamp(3) NULL
+)
+
